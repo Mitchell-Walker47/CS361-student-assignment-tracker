@@ -1,2 +1,3 @@
 # CS361-student-assignment-tracker
-Homework tracker main project assignment for CS361, Software Engineering.
+
+This is my CS361 course project main program. The goal is to help students track assignments, due dates, and completion status.
