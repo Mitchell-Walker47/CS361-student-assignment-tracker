@@ -6,14 +6,13 @@ ASSIGNMENT_DATA = 'assignments.json'
 
 def show_homepage(): 
 
-    print()
-    print('====================================')
+    print('\n====================================')
     print('Homework Tracker by Mitchell Walker')
-    print('====================================')
-    print()
+    print('====================================\n')
+  
     print('Here you can organize your assignments and see what is due soon.')
     print('Information is stored locally on this device.')
-    print('')
+    print()
     print('You are currently in the Main Menu:')
     print('1. View upcoming assignments')
     print('2. Add new assignment')
@@ -66,9 +65,9 @@ def add_assignment(assignments):
         print('Add Assignment Cancelled.')
         return
 
-    print()
-    print('Please enter the due date.')
-    print('Using this format: YYYY-MM-DD')
+ 
+    print('\nPlease enter the due date.')
+    print('Using this format: MM-DD-YYYY')
 
     # validate the input date
     while True:
@@ -79,11 +78,11 @@ def add_assignment(assignments):
             return
 
         try:
-            datetime.strptime(due_date, '%Y-%m-%d')
+            datetime.strptime(due_date, '%m-%d-%Y')
             break
         except ValueError:
             print('Invalid date format.')
-            print('Please try again using YYYY-MM-DD, like 2015-08-29.')
+            print('Please try again using MM-DD-YYYY, like 08-29-2015.')
             print('Or enter 0 to return to the main menu')
 
     print()
@@ -216,7 +215,7 @@ def mark_assignment_complete(assignments):
         print('Invalid assignment number.')
         return
 
-    # Convert choice back into the original list index
+    # converts choice back into the original list index
     real_index = assignment_indexes[choice_number - 1]
     selected_assignment = assignments[real_index]
 
@@ -226,10 +225,10 @@ def mark_assignment_complete(assignments):
     print()
     print('This will mark the assignment as complete.')
 
-    #confirms if you want to mark assignment as Completed(False to True)
+    #  confirms if you want to mark assignment as Completed(False to True)
     confirm = input('Continue? (Y/N): ').strip().lower()
 
-    # Saves the change
+    # save the change
     if confirm == 'y':
         assignments[real_index]['completed'] = True
         save_assignments(assignments)
@@ -247,22 +246,22 @@ def main():
     while True:
         show_homepage()
 
-        choice = input('Please choose a menu option: ')
+        choice = input('\nPlease choose a menu option: ')
 
         if choice == '1':
-            print('View upcoming assignments selected')
+            print('\nView upcoming assignments selected')
             view_assignments(assignments)
 
         elif choice == '2':
-            print('Add assignment selected')
+            print('\nAdd assignment selected')
             add_assignment(assignments)
 
         elif choice == '3':
-            print('View completed assignments selected')
+            print('\nView completed assignments selected')
             view_completed_assignments(assignments)
 
         elif choice == '4':
-            print('Mark assignment complete selected.')
+            print('\nMark assignment complete selected.')
             mark_assignment_complete(assignments)
 
         elif choice == '5':
@@ -274,7 +273,7 @@ def main():
         else:
             print('Choice is invalid, please choose a number from 1 to 6.')
 
-        input('Press Enter to return to the Main Menu: ')
+        input('\nPress Enter to return to the Main Menu: ')
 
 
 main()
